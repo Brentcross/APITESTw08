@@ -9,8 +9,8 @@ it("Should get a login token",async ()=>{
             "Content-Type":"application/json"
         },
         body:JSON.stringify({
-            "userName":"crossm.brent",
-            "password":"sodkod-binJyr-2rehjo"
+            "userName":process.env.STEDI_USERNAME,
+            "password":process.env.STEDI_PASSWORD
         })
     }
 
@@ -19,7 +19,6 @@ it("Should get a login token",async ()=>{
     token = await response.text();
     console.log("Token "+token);
     const status = response.status;
-
     expect(status).toBe(200);
     expect(token.length).toBe(36);
 
