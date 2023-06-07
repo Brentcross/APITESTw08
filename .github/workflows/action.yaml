@@ -6,7 +6,7 @@ jobs:
   dev-test:
 
     runs-on: ubuntu-latest
-
+    environment: working
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js
@@ -14,6 +14,9 @@ jobs:
         with:
           node-version: '18.x'
       - run: npm install
+        env: 
+          STEDI_PASSWORD: ${{ secrets.STEDI_PASSWORD }}
+          STEDI_USERNAME: ${{ secrets.STEDI_USERNAME }}
       - run: npm test
         env: 
           STEDI_PASSWORD: ${{ secrets.STEDI_PASSWORD }}
